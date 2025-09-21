@@ -7,13 +7,14 @@ import {
 } from "@/Components/ui/card";
 import { Highlighter } from "@/Components/ui/highlighter";
 import { Pointer } from "@/Components/ui/pointer";
+import { SparklesText } from "@/Components/ui/sparkles-text";
 import { motion } from "motion/react";
 
 export function EducationPage() {
     return (
         <div className="relative min-h-screen w-full px-4 pt-24 pb-12" style={{ paddingLeft: 220 }}>
             <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance pb-12">
-                --Education--
+                <SparklesText>Education</SparklesText>
             </h1>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:grid-rows-2 pl-4" >
 

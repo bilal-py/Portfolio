@@ -7,13 +7,14 @@ import {
 } from "@/Components/ui/card";
 import { Highlighter } from "@/Components/ui/highlighter";
 import { Pointer } from "@/Components/ui/pointer";
+import { SparklesText } from "@/Components/ui/sparkles-text";
 import { motion } from "motion/react";
 
 export function ExperiencePage() {
     return (
         <div className="relative min-h-screen w-full px-2 pt-24 pb-12 md:pl-[220px] flex flex-col">
             <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance pb-12">
-                --Work Experience--
+                <SparklesText>Work Experience</SparklesText>
             </h1>
             <div className="flex flex-row gap-6 pl-4 w-full max-w-7xl mx-auto overflow-x-auto pb-4 md:grid md:grid-cols-1 md:overflow-x-visible">
 
