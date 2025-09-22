@@ -4,7 +4,7 @@ import { DockDemo } from '@/Components/DockComponent';
 
 function HomePage() {
   return (
-    <div className="relative min-h-screen w-full" style={{ paddingLeft: 220 }}>
+    <div className="relative min-h-screen w-full" >
       {/* Interactive grid as background, always interactive */}
       
       <main

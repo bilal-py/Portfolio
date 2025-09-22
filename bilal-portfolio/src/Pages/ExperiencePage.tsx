@@ -12,7 +12,7 @@ import { motion } from "motion/react";
 
 export function ExperiencePage() {
     return (
-        <div className="relative min-h-screen w-full px-2 pt-24 pb-12 md:pl-[220px] flex flex-col">
+        <div className="relative min-h-screen w-full px-2 pt-24 pb-12 flex flex-col">
             <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance pb-12">
                 <SparklesText>Work Experience</SparklesText>
             </h1>
@@ -27,7 +27,7 @@ export function ExperiencePage() {
                     </CardHeader>
                     <CardContent className="relative flex flex-col gap-2 flex-1 justify-center p-4 text-base text-left">
                         <span className="pointer-events-none text-base md:text-lg font-medium text-slate-800 dark:text-slate-200 pb-2">
-                            <p className="mb-2">Working on an Insurance domain project, developing and maintaining an end-to-end application.</p>
+                            <p className="mb-2">● Working on an Insurance domain project, developing and maintaining an end-to-end application.</p>
                             <Highlighter action="underline" color="#FF9800">
                                 <span className="font-semibold">Track Rate:</span>
                             </Highlighter>
