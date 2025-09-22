@@ -1,15 +1,24 @@
-import { useState } from 'react'
+// ...existing code...
 import './App.css'
-import { MarqueeDemo } from './Components/MarqueeComponent';
+import HomePage from './Pages/HomePage';
+import { EducationPage } from './Pages/EducationPage';
+import { ExperiencePage } from './Pages/ExperiencePage';
+import SkillsPage from './Pages/SkillsPage';
+import AcademicPage from './Pages/AcademicPage';
+import NavbarComponent from './Components/NavbarComponent';
+import HobbiesPage from './Pages/Hobbies';
 function App() {
-  const [count, setCount] = useState(0)
+  // ...existing code...
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-      <MarqueeDemo />
+      <NavbarComponent />
+      <HomePage />
+      <EducationPage />
+      <ExperiencePage />
+      <SkillsPage />
+      <AcademicPage />
+      <HobbiesPage />
     </>
   )
 }
