@@ -1,4 +1,3 @@
-// ...existing code...
 import './App.css'
 import HomePage from './Pages/HomePage';
 import { EducationPage } from './Pages/EducationPage';
@@ -7,18 +6,17 @@ import SkillsPage from './Pages/SkillsPage';
 import AcademicPage from './Pages/AcademicPage';
 import NavbarComponent from './Components/NavbarComponent';
 import HobbiesPage from './Pages/Hobbies';
-function App() {
-  // ...existing code...
 
+function App() {
   return (
     <>
       <NavbarComponent />
-      <HomePage />
-      <EducationPage />
-      <ExperiencePage />
-      <SkillsPage />
-      <AcademicPage />
-      <HobbiesPage />
+      <div id="home"><HomePage /></div>
+      <div id="education"><EducationPage /></div>
+      <div id="experience"><ExperiencePage /></div>
+      <div id="skills"><SkillsPage /></div>
+      <div id="academic"><AcademicPage /></div>
+      <div id="hobbies"><HobbiesPage /></div>
     </>
   )
 }
