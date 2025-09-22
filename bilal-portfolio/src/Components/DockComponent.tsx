@@ -15,9 +15,7 @@ function Tooltip({ children }: { children: React.ReactNode }) {
 function TooltipTrigger({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
-function TooltipContent({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
-}
+// ...existing code...
 function TooltipProvider({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

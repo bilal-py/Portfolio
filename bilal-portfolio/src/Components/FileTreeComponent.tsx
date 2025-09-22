@@ -1,4 +1,4 @@
-import { Home} from 'lucide-react';
+// ...existing code...
 import { AnimatedThemeToggler } from './ui/animated-theme-toggler';
 import { BorderBeam } from './ui/border-beam';
 import { File, Folder, Tree } from './ui/file-tree'
@@ -7,7 +7,7 @@ import {
     BrowserRouter as Router,
     Routes,
     Route,
-    Navigate,
+  // ...existing code...
 } from "react-router-dom";
 
 export function FileTreeDemo() {

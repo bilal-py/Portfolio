@@ -1,9 +1,9 @@
 
-import { SkillComponent } from '@/Components/SkillComponent';
+// ...existing code...
 import {
     Card,
     CardContent,
-    CardDescription,
+    // ...existing code...
     CardHeader,
     CardTitle,
 } from "@/Components/ui/card";
@@ -35,7 +35,7 @@ export default function SkillsPage() {
                     </Pointer>
                 </Card>
             </div>
-            <SkillComponent />
+            {/* <SkillComponent /> */}
         </div>
     );
 }

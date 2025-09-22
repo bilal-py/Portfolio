@@ -1,19 +1,19 @@
 
-import { SkillComponent } from '@/Components/SkillComponent';
+// ...existing code...
 import {
     Card,
     CardContent,
-    CardDescription,
+    // ...existing code...
     CardHeader,
     CardTitle,
 } from "@/Components/ui/card";
 import { Highlighter } from '@/Components/ui/highlighter';
 import { InteractiveHoverButton } from '@/Components/ui/interactive-hover-button';
 import { Pointer } from "@/Components/ui/pointer";
-import { RainbowButton } from '@/Components/ui/rainbow-button';
-import { ShimmerButton } from '@/Components/ui/shimmer-button';
+// ...existing code...
+// ...existing code...
 import { SparklesText } from "@/Components/ui/sparkles-text";
-import { TextAnimate } from '@/Components/ui/text-animate';
+// ...existing code...
 
 export default function AcademicPage() {
     return (
