@@ -12,9 +12,9 @@ function App() {
     <>
       <NavbarComponent />
       <div id="home"><HomePage /></div>
-      <div id="education"><EducationPage /></div>
-      <div id="experience"><ExperiencePage /></div>
       <div id="skills"><SkillsPage /></div>
+      <div id="experience"><ExperiencePage /></div>
+      <div id="education"><EducationPage /></div>
       <div id="academic"><AcademicPage /></div>
       <div id="hobbies"><HobbiesPage /></div>
     </>
