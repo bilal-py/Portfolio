@@ -16,7 +16,7 @@ export function ExperiencePage() {
             <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance pb-12">
                 <SparklesText>Work Experience</SparklesText>
             </h1>
-            <div className="flex flex-row gap-6 pl-4 w-full max-w-7xl mx-auto overflow-x-auto pb-4 md:grid md:grid-cols-1 md:overflow-x-visible">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 w-full max-w-7xl mx-auto pb-4 sm:grid-cols-2 lg:grid-cols-1">
 
                 <Card className="flex flex-col col-span-1 overflow-hidden border bg-gradient-to-br from-slate-50 to-slate-100 transition-all dark:from-slate-900 dark:to-slate-800 shadow-none min-h-[320px]">
                     <CardHeader className="relative pb-2">

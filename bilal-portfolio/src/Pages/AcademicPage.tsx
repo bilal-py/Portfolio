@@ -19,15 +19,15 @@ export default function AcademicPage() {
     return (
         <div className="relative min-h-screen w-full px-4 pt-24 pb-12" >
             <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance pb-12">
-                <SparklesText>Academic and Extracurricular Achievements</SparklesText>
+                <SparklesText>Achievements</SparklesText>
             </h1>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-1 md:grid-rows-1 pl-4" >
                 <Card className="col-span-1 row-span-1 overflow-hidden border bg-gradient-to-br from-pink-50 to-pink-100 transition-all dark:from-pink-900 dark:to-pink-800 shadow-none">
                     <CardHeader className="relative pb-2">
                         <CardTitle className="text-xl font-bold">Hackathons/Contests/Certification</CardTitle>
                     </CardHeader>
-                    <CardContent className="relative flex h-40 ">
-                        <span className="pointer-events-none text-xl font-medium text-pink-800 dark:text-pink-200">
+                    <CardContent className="relative flex flex-col min-h-[120px] sm:min-h-[160px]">
+                        <span className="pointer-events-none text-base sm:text-xl font-medium text-pink-800 dark:text-pink-200">
                             <p>● Ranked in the top <Highlighter action="box" color="#FF9800">14.11%  </Highlighter> globally in LeetCode, with <Highlighter action="underline" color="#FF9800">650+ problems</Highlighter> solved and a
                                 contest rank of <Highlighter action="underline" color="#FF9800">1,400 in Biweekly Contest 156</Highlighter>.</p>
                             <p><span></span> ● <Highlighter action="underline" color="#FF9800">6 Star </Highlighter> in Problem Solving and 5 Star in Python Programming at HackerRank.</p>
