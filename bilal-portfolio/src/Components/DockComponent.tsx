@@ -68,6 +68,18 @@ const Icons = {
       ></path>
     </svg>
   ),
+  leetcode: (props: IconProps) => (
+    <svg viewBox="0 0 128 128" {...props}>
+      <path
+        fill="currentColor"
+        d="M49.4 112.5c-5.5-2.8-10.5-6.3-15.2-10.3-6.2-5.2-11.3-11.1-15.4-17.9-2.6-4.3-2.4-6.1.6-9 3-2.9 6.1-2.7 8.9.7 4.1 5.2 8.3 10.3 12.6 15.2 7.7 8.5 16.9 14.1 28.3 15.7 9.6 1.4 18.4-.4 26.5-5.6 8.1-5.2 13.5-12.5 16.2-21.7 2.8-9.5 2.1-18.8-2-27.7-4.1-8.8-10.6-15.4-19.5-19.8-8.5-4.1-17.4-5.1-26.6-3.2-5.5 1.1-10.5 3.2-15.1 6.3-1.3.9-2.4 2-3.7 3-.3.3-.7.5-1.4.9-.8-.6-1.7-1.1-2.5-1.6-3.1-2.1-4-5.7-2.2-8.9 1.2-2.1 2.9-3.8 4.9-5.1 6.3-4.2 13-7.1 20.4-8.4 12.4-2.1 24.1-.7 35.1 5.1 12.3 6.4 21.2 16.1 26.6 28.8 4.4 10.6 5.6 21.6 3.6 32.7-2.8 15.6-10.6 28.4-23.6 37.6-8.5 6-18 9.5-28.5 10.2-11.7.8-22.4-1.5-32.5-6.6z"
+      />
+      <path
+        fill="currentColor"
+        d="M87.3 69.5H33.3c-2.1 0-3.7-1.1-4.6-2.9-.8-1.7-.6-3.4.5-5 1-1.5 2.4-2.3 4.2-2.3h53.6c2.1 0 3.7 1 4.6 2.9.9 1.7.8 3.4-.3 5-1 1.5-2.5 2.3-4 2.3z"
+      />
+    </svg>
+  ),
 };
 
 const DATA = {
@@ -88,14 +100,18 @@ const DATA = {
         icon: Icons.linkedin,
       },
       X: {
-        name: "X",
-        url: "#",
-        icon: Icons.x,
+        name: "Youtube",
+        url: "https://www.youtube.com/@bilaalcodes",
+        icon: Icons.youtube,
       },
       email: {
         name: "Send Email",
-        url: "#",
+        url: "mailto:bilalrizvi2110@gmail.com",
         icon: Icons.email,
+      }, leetcode: {
+        name: "Send Email",
+        url: "mailto:bilalrizvi2110@gmail.com",
+        icon: Icons.leetcode,
       },
     },
   },
@@ -103,8 +119,7 @@ const DATA = {
 
 export function DockDemo() {
   return (
-    <div className="flex flex-col items-center justify-center">
-      
+    <div className="flex flex-col items-center justify-center w-full">
       <TooltipProvider>
         <Dock direction="middle">
           {DATA.navbar.map((item) => (
@@ -116,10 +131,10 @@ export function DockDemo() {
                     aria-label={item.label}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full",
+                      "size-10 sm:size-12 rounded-full",
                     )}
                   >
-                    <item.icon className="size-4" />
+                    <item.icon className="size-3 sm:size-4" />
                   </a>
                 </TooltipTrigger>
                 {/* No label below icon */}
@@ -136,10 +151,10 @@ export function DockDemo() {
                     aria-label={social.name}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full ",
+                      "size-10 sm:size-12 rounded-full ",
                     )}
                   >
-                    <social.icon className="size-4" />
+                    <social.icon className="size-3 sm:size-4" />
                   </a>
                 </TooltipTrigger>
                 {/* No label below icon */}

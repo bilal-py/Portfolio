@@ -21,15 +21,12 @@ export default function HobbiesPage() {
                     <CardHeader className="relative pb-2">
                         <CardTitle className="text-xl font-bold">Life is Interesting, Hobbies are Fun</CardTitle>
                     </CardHeader>
-                    <CardContent className="relative flex h-40 ">
-                        <span className="pointer-events-none text-xl font-medium text-yellow-800 dark:text-yellow-200">
+                    <CardContent className="relative flex flex-col min-h-[100px] sm:min-h-[140px]">
+                        <span className="pointer-events-none text-base sm:text-xl font-medium text-yellow-800 dark:text-yellow-200">
                             <p><span className='font-bold '>Guitar:</span></p>
                             <p><span className='font-bold '>Fitness:</span></p>
                             <p><span className='font-bold '>Youtuber:</span></p>
                             <p><span className='font-bold '>Coding:</span></p>
-
-
-                            
                         </span>
                     </CardContent>
                     <Pointer>

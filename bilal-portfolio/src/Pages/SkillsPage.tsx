@@ -1,5 +1,6 @@
 
 // ...existing code...
+import { SkillComponent } from "@/Components/SkillComponent";
 import {
     Card,
     CardContent,
@@ -21,8 +22,8 @@ export default function SkillsPage() {
                     <CardHeader className="relative pb-2">
                         <CardTitle className="text-xl font-bold">Tech-Stacks</CardTitle>
                     </CardHeader>
-                    <CardContent className="relative flex h-40 ">
-                        <span className="pointer-events-none text-xl font-medium text-yellow-800 dark:text-yellow-200">
+                    <CardContent className="relative flex flex-col min-h-[120px] sm:min-h-[160px]">
+                        <span className="pointer-events-none text-base sm:text-xl font-medium text-yellow-800 dark:text-yellow-200">
                             <p><span className='font-bold '>Languages:</span> C#, Python, JavaScript, LINQ</p>
                             <p><span className='font-bold '>Frameworks & Libraries:</span> .NET, Entity Framework, React, jQuery, Bootstrap </p>
                             <p><span className='font-bold '>Databases:</span> SQL Server, Postgres SQL </p>
@@ -31,11 +32,11 @@ export default function SkillsPage() {
                         </span>
                     </CardContent>
                     <Pointer>
-                        <div className="text-2xl">🐼</div>
+                        <div className="text-2xl">👨‍💻</div>
                     </Pointer>
                 </Card>
             </div>
-            {/* <SkillComponent /> */}
+            <SkillComponent />
         </div>
     );
 }

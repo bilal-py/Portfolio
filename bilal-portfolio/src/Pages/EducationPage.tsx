@@ -12,27 +12,26 @@ import { motion } from "motion/react";
 
 export function EducationPage() {
     return (
-        <div className="relative min-h-screen w-full px-4 pt-24 pb-12" >
-            <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance pb-12">
+    <div className="relative min-h-screen w-full px-2 pt-20 pb-8 sm:px-4 sm:pt-24 sm:pb-12" >
+            <h1 className="scroll-m-20 text-center text-2xl sm:text-4xl font-extrabold tracking-tight text-balance pb-8 sm:pb-12">
                 <SparklesText>Education</SparklesText>
             </h1>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:grid-rows-2  " >
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 md:grid-rows-2" >
 
                 <Card className="col-span-1 row-span-1 overflow-hidden border bg-gradient-to-br from-slate-50 to-slate-100 transition-all dark:from-slate-900 dark:to-slate-800 shadow-none">
                     <CardHeader className="relative pb-2">
-                        <CardTitle className="text-xl font-bold">Bachelors Of Technology</CardTitle>
-                        <CardDescription className="text-sm text-slate-600 dark:text-slate-400">
+                        <CardTitle className="text-base sm:text-xl font-bold">Bachelors Of Technology</CardTitle>
+                        <CardDescription className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
                             2018 - 2022
                         </CardDescription>
                     </CardHeader>
-                    <CardContent className="relative flex h-40 items-center justify-center p-6">
-                        <span className="pointer-events-none text-xl font-medium text-slate-800 dark:text-slate-200">
+                    <CardContent className="relative flex h-32 sm:h-40 items-center justify-center p-4 sm:p-6">
+                        <span className="pointer-events-none text-sm sm:text-xl font-medium text-slate-800 dark:text-slate-200">
                             I have completed my <Highlighter action="underline" color="#FF9800">
                                 Computer Science and Engineering
                             </Highlighter> degree
                             from
                             Pranveer Singh Institute of Technology, India
-                            
                         </span>
                     </CardContent>
                     <Pointer>
