@@ -4,9 +4,9 @@ import { AnimatedThemeToggler } from './ui/animated-theme-toggler'
 
 const navigation = [
     { name: 'Dashboard', href: '#home', current: true },
-    { name: 'Education', href: '#education', current: false },
-    { name: 'Experience', href: '#experience', current: false },
     { name: 'Skills', href: '#skills', current: false },
+    { name: 'Experience', href: '#experience', current: false },
+    { name: 'Education', href: '#education', current: false },
     { name: 'Achievements', href: '#academic', current: false },
     { name: 'Hobbies', href: '#hobbies', current: false },
 ]
