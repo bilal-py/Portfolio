@@ -4,7 +4,6 @@ import { SkillComponent } from "@/Components/SkillComponent";
 import {
     Card,
     CardContent,
-    // ...existing code...
     CardHeader,
     CardTitle,
 } from "@/Components/ui/card";

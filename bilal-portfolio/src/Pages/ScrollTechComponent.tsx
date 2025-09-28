@@ -92,7 +92,7 @@ export function ScrollTechComponent() {
             />
           ))}
         </ScrollVelocityRow>
-        <ScrollVelocityRow baseVelocity={4} direction={1} className="py-4">
+        <ScrollVelocityRow baseVelocity={4} direction={-1} className="py-4">
           {images.map((src) => (
             <img
               src={`${src}`}
