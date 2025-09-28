@@ -109,8 +109,8 @@ const DATA = {
         url: "mailto:bilalrizvi2110@gmail.com",
         icon: Icons.email,
       }, leetcode: {
-        name: "Send Email",
-        url: "mailto:bilalrizvi2110@gmail.com",
+        name: "Leetcode Profile",
+        url: "https://leetcode.com/u/bilal_py/",
         icon: Icons.leetcode,
       },
     },
