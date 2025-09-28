@@ -10,6 +10,7 @@ import {
 } from "@/Components/ui/card";
 import { Pointer } from "@/Components/ui/pointer";
 import { SparklesText } from "@/Components/ui/sparkles-text";
+import { ScrollTechComponent } from "./ScrollTechComponent";
 
 export default function SkillsPage() {
     return (
@@ -37,6 +38,8 @@ export default function SkillsPage() {
                 </Card>
             </div>
             <SkillComponent />
+            <ScrollTechComponent />
+
         </div>
     );
 }

@@ -9,6 +9,8 @@ import {
 } from "@/Components/ui/card";
 import { Pointer } from "@/Components/ui/pointer";
 import { SparklesText } from "@/Components/ui/sparkles-text";
+import { Scroll } from "lucide-react";
+import { ScrollTechComponent } from "./ScrollTechComponent";
 
 export default function HobbiesPage() {
     return (
@@ -34,6 +36,7 @@ export default function HobbiesPage() {
                     </Pointer>
                 </Card>
             </div>
+
         </div>
     );
 }
