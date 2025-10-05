@@ -80,6 +80,18 @@ const Icons = {
       />
     </svg>
   ),
+  medium: (props: IconProps) => (
+  <svg
+    viewBox="0 0 1043.63 592.71"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor"
+    {...props}
+  >
+    <g>
+      <path d="M588.67 296.16c0 163.52-131.1 296.16-292.95 296.16S2.77 459.68 2.77 296.16 133.86 0 295.72 0s292.95 132.63 292.95 296.16zM823.89 296.16c0 155.36-65.73 281.28-146.82 281.28s-146.83-125.92-146.83-281.28S596.98 14.88 677.07 14.88s146.82 125.92 146.82 281.28zM1043.63 296.16c0 148.8-29.44 269.44-65.73 269.44s-65.73-120.64-65.73-269.44 29.44-269.44 65.73-269.44 65.73 120.64 65.73 269.44z"/>
+    </g>
+  </svg>
+),
 };
 
 const DATA = {
@@ -112,6 +124,10 @@ const DATA = {
         name: "Leetcode Profile",
         url: "https://leetcode.com/u/bilal_py/",
         icon: Icons.leetcode,
+      }, Medium: {
+        name: "Medium Profile",
+        url: "https://medium.com/@bilalcodes",
+        icon: Icons.medium,
       },
     },
   },

@@ -6,6 +6,7 @@ import SkillsPage from './Pages/SkillsPage';
 import AcademicPage from './Pages/AcademicPage';
 import NavbarComponent from './Components/NavbarComponent';
 import HobbiesPage from './Pages/Hobbies';
+import Footer from './Components/Footer';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <div id="education"><EducationPage /></div>
       <div id="academic"><AcademicPage /></div>
       <div id="hobbies"><HobbiesPage /></div>
+      <div className='h-24'> <Footer/></div>
     </>
   )
 }

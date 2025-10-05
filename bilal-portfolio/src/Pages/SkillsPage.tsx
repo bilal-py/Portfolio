@@ -9,7 +9,7 @@ import {
 } from "@/Components/ui/card";
 import { Pointer } from "@/Components/ui/pointer";
 import { SparklesText } from "@/Components/ui/sparkles-text";
-import { ScrollTechComponent } from "./ScrollTechComponent";
+import { ScrollTechComponent } from "../Components/ScrollTechComponent";
 
 export default function SkillsPage() {
     return (
