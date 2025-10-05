@@ -7,17 +7,13 @@ const slugs = [
     "leetcode",
     "javascript",
     "dotnet",
-    "csharp",
     "jquery",
     "bootstrap",
     "salesforce",
-    "microsoftsqlserver",
     "railway",
     "react",
     "html5",
-    "css3",
     "tailwindcss",
-    "amazonaws",
     "postgresql",
     "firebase",
     "vercel",
@@ -26,7 +22,6 @@ const slugs = [
     "git",
     "jira",
     "github",
-    "visualstudiocode",
 ];
 
 export function SkillComponent() {
