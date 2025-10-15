@@ -1,19 +1,14 @@
 
-// ...existing code...
 import {
     Card,
     CardContent,
-    // ...existing code...
     CardHeader,
     CardTitle,
 } from "@/Components/ui/card";
 import { Highlighter } from '@/Components/ui/highlighter';
 import { InteractiveHoverButton } from '@/Components/ui/interactive-hover-button';
 import { Pointer } from "@/Components/ui/pointer";
-// ...existing code...
-// ...existing code...
 import { SparklesText } from "@/Components/ui/sparkles-text";
-// ...existing code...
 
 export default function AcademicPage() {
     return (
