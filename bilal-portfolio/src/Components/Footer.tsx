@@ -1,13 +1,22 @@
+import { profile, socials } from "@/data/resume";
 
-function Footer() {
+export default function Footer() {
   return (
-    <>
-    <section className='w-full border-t border-gray-300 dark:border-gray-700'></section>
-    <div className='text-center pt-4 text-sm text-gray-400 dark:text-gray-500'>Made with ❤️ by <span className='font-bold'>Bilal Imran</span></div>
-    {/* <div className='text-center text-sm text-gray-400 dark:text-gray-500'>Special thanks to <span className='font-bold'>Nora</span></div> */}
-    <div className='text-center pb-4 text-sm text-gray-400 dark:text-gray-500'>© {new Date().getFullYear()} Bilal Imran. All rights reserved.</div>
-</>
-  )
+    <footer className="border-t px-5 py-10 sm:px-8">
+      <div className="mx-auto flex max-w-5xl flex-col gap-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <p>
+          © {new Date().getFullYear()} {profile.name}. Built with React and Tailwind CSS.
+        </p>
+        <ul className="flex flex-wrap gap-x-5 gap-y-2">
+          {socials.map((s) => (
+            <li key={s.key}>
+              <a href={s.url} target="_blank" rel="noopener noreferrer" className="hover:text-foreground hover:underline">
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </footer>
+  );
 }
-
-export default Footer

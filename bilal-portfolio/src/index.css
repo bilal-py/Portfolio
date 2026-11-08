@@ -1,1 +1,175 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "IBM Plex Sans", ui-sans-serif, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", Menlo, Consolas, monospace;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-link: var(--link);
+  --color-mark: var(--mark);
+  --color-mark-ink: var(--mark-ink);
+}
+
+:root {
+  --radius: 0.375rem;
+  --background: #f4f6fa;
+  --foreground: #0f1b2d;
+  --card: #ffffff;
+  --card-foreground: #0f1b2d;
+  --popover: #ffffff;
+  --popover-foreground: #0f1b2d;
+  --primary: #0f1b2d;
+  --primary-foreground: #f4f6fa;
+  --secondary: #e6eaf1;
+  --secondary-foreground: #0f1b2d;
+  --muted: #e6eaf1;
+  --muted-foreground: #566176;
+  --accent: #e6eaf1;
+  --accent-foreground: #0f1b2d;
+  --destructive: #c42b2b;
+  --border: #d6dce6;
+  --input: #c3cbd8;
+  --ring: #2b4acb;
+  --link: #2b4acb;
+  --mark: #ffe066;
+  --mark-ink: #0f1b2d;
+}
+
+.dark {
+  --background: #0e1626;
+  --foreground: #e7ecf3;
+  --card: #142037;
+  --card-foreground: #e7ecf3;
+  --popover: #142037;
+  --popover-foreground: #e7ecf3;
+  --primary: #e7ecf3;
+  --primary-foreground: #0e1626;
+  --secondary: #1b2840;
+  --secondary-foreground: #e7ecf3;
+  --muted: #1b2840;
+  --muted-foreground: #9aa6ba;
+  --accent: #1b2840;
+  --accent-foreground: #e7ecf3;
+  --destructive: #ff6b6b;
+  --border: #23324d;
+  --input: #2f4163;
+  --ring: #8ea2ff;
+  --link: #8ea2ff;
+  --mark: #ffd84d;
+  --mark-ink: #0f1b2d;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    font-optical-sizing: auto;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--mark);
+    color: var(--mark-ink);
+  }
+}
+
+@utility text-link {
+  color: var(--link);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  &:hover {
+    text-decoration-thickness: 2px;
+  }
+  & .entity-swap:not(.entity-tag) {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+}
+
+.entity-tag {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.8em;
+  letter-spacing: -0.02em;
+  background: var(--mark);
+  color: var(--mark-ink);
+  padding: 0 0.2em;
+  border-radius: 2px;
+}
+
+.entity-swap {
+  display: inline-block;
+  animation: entity-wipe 420ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes entity-wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

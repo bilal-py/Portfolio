@@ -1,90 +1,104 @@
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { AnimatedThemeToggler } from './ui/animated-theme-toggler'
+import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
+
+import { AnimatedThemeToggler } from "@/Components/ui/animated-theme-toggler";
+import { profile } from "@/data/resume";
+import { cn } from "@/lib/utils";
 
 const navigation = [
-    { name: 'Dashboard', href: '#home', current: true },
-    { name: 'Skills', href: '#skills', current: false },
-    { name: 'Experience', href: '#experience', current: false },
-    { name: 'Education', href: '#education', current: false },
-    { name: 'Achievements', href: '#academic', current: false },
-    { name: 'Hobbies', href: '#hobbies', current: false },
-]
+  { name: "About", id: "about" },
+  { name: "Experience", id: "experience" },
+  { name: "Projects", id: "projects" },
+  { name: "Skills", id: "skills" },
+  { name: "Awards", id: "achievements" },
+  { name: "Education", id: "education" },
+  { name: "Contact", id: "contact" },
+];
 
-function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(' ')
+const ids = navigation.map((n) => n.id);
+
+function useActiveSection() {
+  const [active, setActive] = useState("");
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+    ["home", ...ids].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+  return active;
 }
 
-    export default function NavbarComponent() {
-        return (
-            <Disclosure
-                as="nav"
-                className="fixed top-0 left-0 w-full bg-gray-900 text-white py-2 px-4 sm:py-4 sm:px-8 flex items-center justify-between shadow-md z-50 transition-all duration-300"
-            >
-                <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 w-full">
-                    <div className="relative flex h-14 sm:h-16 items-center justify-between">
-                        <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                            {/* Mobile menu button*/}
-                            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500">
-                                <span className="absolute -inset-0.5" />
-                                <span className="sr-only">Open main menu</span>
-                                <Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden" />
-                                <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-open:block" />
-                            </DisclosureButton>
-                        </div>
-                        <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                            <div className="flex shrink-0 items-center">
-                                <img
-                                    alt="Your Company"
-                                    src="./logo.png"
-                                    className="h-7 w-auto sm:h-8"
-                                />
-                            </div>
-                            <div className="hidden sm:ml-6 sm:block">
-                                <div className="flex space-x-2 sm:space-x-4">
-                                    {navigation.map((item) => (
-                                        <a
-                                            key={item.name}
-                                            href={item.href}
-                                            aria-current={item.current ? 'page' : undefined}
-                                            className={classNames(
-                                                item.current ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white',
-                                                'rounded-md px-2 py-1 sm:px-3 sm:py-2 text-xs sm:text-sm font-medium',
-                                            )}
-                                        >
-                                            {item.name}
-                                        </a>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="absolute inset-y-0 right-0 flex items-center pr-1 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                            <AnimatedThemeToggler />
-                        </div>
-                    </div>
-                </div>
-                <style>{`
-                    html { scroll-behavior: smooth; }
-                    body { padding-top: 72px; }
-                `}</style>
-                <DisclosurePanel className="sm:hidden">
-                    <div className="space-y-1 px-2 pt-2 pb-3">
-                        {navigation.map((item) => (
-                            <DisclosureButton
-                                key={item.name}
-                                as="a"
-                                href={item.href}
-                                aria-current={item.current ? 'page' : undefined}
-                                className={classNames(
-                                    item.current ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white',
-                                    'block rounded-md px-2 py-1 text-xs font-medium',
-                                )}
-                            >
-                                {item.name}
-                            </DisclosureButton>
-                        ))}
-                    </div>
-                </DisclosurePanel>
-            </Disclosure>
-        )
+export default function NavbarComponent() {
+  const [open, setOpen] = useState(false);
+  const active = useActiveSection();
+
+  const linkClass = (id: string) =>
+    cn(
+      "decoration-mark decoration-[3px] underline-offset-[6px] transition-colors",
+      active === id ? "text-foreground underline" : "text-muted-foreground hover:text-foreground",
+    );
+
+  return (
+    <header className="fixed inset-x-0 top-0 z-50 border-b bg-background/90 backdrop-blur">
+      <nav aria-label="Main" className="mx-auto flex h-16 max-w-[calc(64rem+4rem)] items-center justify-between px-5 sm:px-8">
+        <a href="#home" className="font-display text-lg font-bold tracking-tight" onClick={() => setOpen(false)}>
+          {profile.name}
+        </a>
+
+        <ul className="hidden items-center gap-6 text-[0.9375rem] font-medium lg:flex">
+          {navigation.map((item) => (
+            <li key={item.id}>
+              <a
+                href={`#${item.id}`}
+                aria-current={active === item.id ? "location" : undefined}
+                className={linkClass(item.id)}
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div className="-mr-2 flex items-center gap-1">
+          <AnimatedThemeToggler className="rounded-md p-2 text-muted-foreground hover:bg-accent hover:text-foreground [&_svg]:size-5" />
+          <button
+            type="button"
+            className="rounded-md p-2 text-muted-foreground hover:bg-accent hover:text-foreground lg:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((o) => !o)}
+          >
+            {open ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
+        </div>
+      </nav>
+
+      {open && (
+        <ul id="mobile-menu" className="space-y-1 border-t bg-background px-5 py-4 font-medium lg:hidden">
+          {navigation.map((item) => (
+            <li key={item.id}>
+              <a
+                href={`#${item.id}`}
+                onClick={() => setOpen(false)}
+                aria-current={active === item.id ? "location" : undefined}
+                className={cn("block py-2", linkClass(item.id))}
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </header>
+  );
 }

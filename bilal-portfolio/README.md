@@ -1,69 +1,42 @@
-# React + TypeScript + Vite
+# Bilal Imran — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio of **Bilal Imran**, Full-Stack Software Engineer (.NET · Angular · React · Generative AI) and Consultant Developer at Thoughtworks.
 
-Currently, two official plugins are available:
+**Live:** https://bilal-py.github.io/Portfolio/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech stack
 
-## Expanding the ESLint configuration
+- React 19 + TypeScript, built with Vite
+- Tailwind CSS v4 and shadcn/ui primitives
+- Bricolage Grotesque and IBM Plex Sans (Google Fonts)
+- Formspree for the contact form (no backend required)
+- Deployed to GitHub Pages via `gh-pages`
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Project structure
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+  data/resume.ts      # all site content (experience, projects, skills…), the one file to edit
+  Pages/              # one component per section (Home, About, Experience, Projects, …)
+  Components/         # shared pieces: Navbar, Footer, Section
+  Components/ui/      # shadcn primitives
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Updating content
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Edit `src/data/resume.ts`. Optional settings in `profile`:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Field | Purpose |
+|---|---|
+| `resumeFile` | PDF placed in `public/` to enable the **Download CV** button |
+| `photoFile` | Image placed in `public/` to show a portrait in the hero |
+| `formspreeEndpoint` | Formspree form URL; when empty, the form falls back to opening an email |
+
+## Scripts
+
+```bash
+npm install
+npm run dev      # local dev server
+npm run build    # type-check + production build
+npm run deploy   # build and publish to GitHub Pages
 ```

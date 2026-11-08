@@ -1,26 +1,35 @@
-import './App.css'
-import HomePage from './Pages/HomePage';
-import { EducationPage } from './Pages/EducationPage';
-import { ExperiencePage } from './Pages/ExperiencePage';
-import SkillsPage from './Pages/SkillsPage';
-import AcademicPage from './Pages/AcademicPage';
-import NavbarComponent from './Components/NavbarComponent';
-import HobbiesPage from './Pages/Hobbies';
-import Footer from './Components/Footer';
+import NavbarComponent from "./Components/NavbarComponent";
+import Footer from "./Components/Footer";
+import HomePage from "./Pages/HomePage";
+import AboutPage from "./Pages/AboutPage";
+import ExperiencePage from "./Pages/ExperiencePage";
+import ProjectsPage from "./Pages/ProjectsPage";
+import SkillsPage from "./Pages/SkillsPage";
+import AchievementsPage from "./Pages/AchievementsPage";
+import EducationPage from "./Pages/EducationPage";
+import ContactPage from "./Pages/ContactPage";
 
-function App() {
+export default function App() {
   return (
     <>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:shadow"
+      >
+        Skip to content
+      </a>
       <NavbarComponent />
-      <div id="home"><HomePage /></div>
-      <div id="skills"><SkillsPage /></div>
-      <div id="experience"><ExperiencePage /></div>
-      <div id="education"><EducationPage /></div>
-      <div id="academic"><AcademicPage /></div>
-      <div id="hobbies"><HobbiesPage /></div>
-      <div className='h-24'> <Footer/></div>
+      <main id="main" className="pt-16">
+        <HomePage />
+        <AboutPage />
+        <ExperiencePage />
+        <ProjectsPage />
+        <SkillsPage />
+        <AchievementsPage />
+        <EducationPage />
+        <ContactPage />
+      </main>
+      <Footer />
     </>
-  )
+  );
 }
-
-export default App
