@@ -1,7 +1,8 @@
 import { useState, type FormEvent, type ReactNode } from "react";
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { CheckCircle2, Loader2, Mail } from "lucide-react";
 
 import { Section } from "@/Components/Section";
+import { SocialIcons } from "@/Components/SocialIcons";
 import { Button } from "@/Components/ui/button";
 import { Input } from "@/Components/ui/input";
 import { Label } from "@/Components/ui/label";
@@ -75,12 +76,14 @@ export default function ContactPage() {
           <ul className="space-y-2 text-base">
             <li>
               <a href={`mailto:${profile.email}`} className="text-link">
+                <Mail aria-hidden="true" className="mr-1.5 inline-block size-[1em] align-[-0.125em]" />
                 {profile.email}
               </a>
             </li>
             {linkedin && (
               <li>
                 <a href={linkedin.url} target="_blank" rel="noopener noreferrer" className="text-link">
+                  <SocialIcons.linkedin className="mr-1.5 inline-block size-[1em] align-[-0.125em]" />
                   LinkedIn
                 </a>
               </li>

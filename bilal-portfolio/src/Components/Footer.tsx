@@ -1,3 +1,4 @@
+import { SocialIcons } from "@/Components/SocialIcons";
 import { profile, socials } from "@/data/resume";
 
 export default function Footer() {
@@ -8,13 +9,17 @@ export default function Footer() {
           © {new Date().getFullYear()} {profile.name}. Built with React and Tailwind CSS.
         </p>
         <ul className="flex flex-wrap gap-x-5 gap-y-2">
-          {socials.map((s) => (
-            <li key={s.key}>
-              <a href={s.url} target="_blank" rel="noopener noreferrer" className="hover:text-foreground hover:underline">
-                {s.label}
-              </a>
-            </li>
-          ))}
+          {socials.map((s) => {
+            const Icon = SocialIcons[s.key];
+            return (
+              <li key={s.key}>
+                <a href={s.url} target="_blank" rel="noopener noreferrer" className="hover:text-foreground hover:underline">
+                  <Icon className="mr-1.5 inline-block size-[1em] align-[-0.125em]" />
+                  {s.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </footer>

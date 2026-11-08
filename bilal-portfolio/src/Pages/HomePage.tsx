@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Download, EyeOff, Eye } from "lucide-react";
+import { Download, EyeOff, Eye, Mail } from "lucide-react";
 
+import { SocialIcons } from "@/Components/SocialIcons";
 import { buttonVariants } from "@/Components/ui/button";
 import { profile, socials } from "@/data/resume";
 import { cn } from "@/lib/utils";
@@ -94,16 +95,21 @@ export default function HomePage() {
 
         <div className="mt-8 flex flex-col gap-3 text-base sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-6">
           <a href={`mailto:${profile.email}`} className="text-link">
+            <Mail aria-hidden="true" className="mr-1.5 inline-block size-[1em] align-[-0.125em]" />
             <Entity type="EMAIL_ADDRESS" value={profile.email} redacted={redacted} order={2} />
           </a>
           <ul className="flex flex-wrap gap-x-5 gap-y-2">
-            {shownSocials.map((s) => (
-              <li key={s.key}>
-                <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-link">
-                  {s.label}
-                </a>
-              </li>
-            ))}
+            {shownSocials.map((s) => {
+              const Icon = SocialIcons[s.key];
+              return (
+                <li key={s.key}>
+                  <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-link">
+                    <Icon className="mr-1.5 inline-block size-[1em] align-[-0.125em]" />
+                    {s.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
 
