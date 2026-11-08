@@ -12,11 +12,11 @@ export const profile = {
   availability: "Open to roles in Germany",
   email: "bilalrizvi2110@gmail.com",
   /** Path inside /public, e.g. "Bilal_Imran_Resume.pdf". Leave empty to hide the "Download CV" button. */
-  resumeFile: "",
+  resumeFile: "Bilal_Imran_Resume.pdf",
   /** Path inside /public, e.g. "profile.jpg". Leave empty to hide the photo. */
   photoFile: "",
   /** Formspree endpoint, e.g. "https://formspree.io/f/abcdwxyz". Leave empty to fall back to email. */
-  formspreeEndpoint: "",
+  formspreeEndpoint: "https://formspree.io/f/meaawwbo",
 };
 
 export type SocialKey = "github" | "linkedin" | "leetcode" | "hackerrank" | "medium" | "youtube";

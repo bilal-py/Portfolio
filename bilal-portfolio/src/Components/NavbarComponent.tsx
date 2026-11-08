@@ -12,6 +12,7 @@ const navigation = [
   { name: "Skills", id: "skills" },
   { name: "Awards", id: "achievements" },
   { name: "Education", id: "education" },
+  { name: "Ask", id: "ask" },
   { name: "Contact", id: "contact" },
 ];
 

@@ -7,6 +7,7 @@ import ProjectsPage from "./Pages/ProjectsPage";
 import SkillsPage from "./Pages/SkillsPage";
 import AchievementsPage from "./Pages/AchievementsPage";
 import EducationPage from "./Pages/EducationPage";
+import AskPage from "./Pages/AskPage";
 import ContactPage from "./Pages/ContactPage";
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
         <SkillsPage />
         <AchievementsPage />
         <EducationPage />
+        <AskPage />
         <ContactPage />
       </main>
       <Footer />
