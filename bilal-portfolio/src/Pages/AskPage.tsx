@@ -22,7 +22,10 @@ export default function AskPage() {
   const logRef = useRef<HTMLOListElement>(null);
 
   useEffect(() => {
-    logRef.current?.lastElementChild?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    // Scroll only the chat log itself (never the page), and only once a question has been asked.
+    const log = logRef.current;
+    if (!log || turns.length === 0) return;
+    log.scrollTo({ top: log.scrollHeight, behavior: "smooth" });
   }, [turns]);
 
   function ask(text: string) {

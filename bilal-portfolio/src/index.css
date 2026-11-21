@@ -35,6 +35,7 @@
   --color-link: var(--link);
   --color-mark: var(--mark);
   --color-mark-ink: var(--mark-ink);
+  --color-spence: var(--spence);
 }
 
 :root {
@@ -60,6 +61,11 @@
   --link: #2b4acb;
   --mark: #ffe066;
   --mark-ink: #0f1b2d;
+  /* Spence's own brand colours, used only inside its case study */
+  --spence: #1e5a46;
+  --spence-soft: #d6e6dc;
+  --spence-paper: #f4f7f2;
+  --spence-wash: #eef4f0;
 }
 
 .dark {
@@ -84,6 +90,10 @@
   --link: #8ea2ff;
   --mark: #ffd84d;
   --mark-ink: #0f1b2d;
+  --spence: #6fc2a0;
+  --spence-soft: #2a5c49;
+  --spence-paper: #0e1626;
+  --spence-wash: #132a2a;
 }
 
 @layer base {

@@ -102,6 +102,8 @@ export type Project = {
   approach: string;
   impact: string;
   stack: string[];
+  /** Set for projects with their own interactive showcase. */
+  showcase?: "spence";
   link?: { label: string; url: string };
 };
 
@@ -116,6 +118,19 @@ export const projects: Project[] = [
     impact:
       "Removed manual data entry from the flow while keeping LLM costs low. Pitched directly to the client's group CEO.",
     stack: ["Python", "Pydantic AI", "Claude", "Microsoft Presidio"],
+  },
+  {
+    title: "Spence: Local-First AI Expense Tracker",
+    context: "Personal project, open source",
+    problem:
+      "Expense apps want a bank login or a cloud account, and LLMs misread statements: merged lines, invented rows, 03/04 read the wrong way round.",
+    approach:
+      "A .NET 11 clean-architecture API and a React 19 app. An LLM (Ollama locally, or Gemini/OpenAI with your own key) extracts transactions from PDF, CSV and receipt photos with structured output; every amount is checked against the statement text, date order is settled per statement, and category corrections become merchant rules. Quick add parses lines like 'chai 40 upi' with plain rules and only asks the AI about unknown merchants.",
+    impact:
+      "All data stays in one SQLite file on the user's machine, with daily backups. Includes budgets, bills, savings pots, a chat that answers with read-only capped query tools, Monthly Wrapped cards and 79 xUnit tests.",
+    stack: [".NET 11", "EF Core", "SQLite", "Microsoft.Extensions.AI", "Ollama", "PdfPig", "React 19", "TypeScript", "Tailwind 4", "xUnit"],
+    showcase: "spence",
+    link: { label: "GitHub", url: "https://github.com/bilal-py/spence-ai" },
   },
   {
     title: "AI QA Agents for Spec-Driven Testing",

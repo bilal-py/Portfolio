@@ -42,6 +42,13 @@ const SYNONYMS: Record<string, string[]> = {
   pii: ["presidio", "privacy"],
   cost: ["optimisation", "cheaper", "lower"],
   years: ["experience"],
+  expense: ["spence", "finance", "tracker"],
+  money: ["spence", "expense", "finance"],
+  finance: ["spence", "expense"],
+  personal: ["spence", "project"],
+  side: ["spence", "personal", "project"],
+  ollama: ["spence", "local"],
+  local: ["spence", "ollama", "sqlite"],
 };
 
 function stem(word: string) {
@@ -98,7 +105,7 @@ function buildDocs(): Doc[] {
     docs.push({
       source: `Project: ${p.title}`,
       answer: `${p.title} (${p.context}). ${p.problem} ${p.approach} ${p.impact}`,
-      keywords: `project built ${p.stack.join(" ")}`,
+      keywords: `project built ${p.showcase ? "personal side open source expense tracker finance budget local-first" : ""} ${p.stack.join(" ")}`,
     });
   }
 

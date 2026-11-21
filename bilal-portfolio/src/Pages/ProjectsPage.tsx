@@ -1,8 +1,11 @@
 import { Section } from "@/Components/Section";
+import { SpenceShowcase } from "@/Components/SpenceShowcase";
 import { projects, socials } from "@/data/resume";
 
 const github = socials.find((s) => s.key === "github");
-const [featured, ...rest] = projects;
+const [featured, ...others] = projects;
+const spence = others.find((p) => p.showcase === "spence");
+const rest = others.filter((p) => !p.showcase);
 
 const pipeline = [
   { title: "Document in", body: "A financial document arrives that would otherwise be keyed in by hand." },
@@ -61,6 +64,8 @@ export default function ProjectsPage() {
           <p className="mt-5 text-sm text-muted-foreground">{featured.stack.join(", ")}</p>
         </div>
       </article>
+
+      {spence && <SpenceShowcase stack={spence.stack} />}
 
       <div className="mt-6">
         {rest.map((project) => (
