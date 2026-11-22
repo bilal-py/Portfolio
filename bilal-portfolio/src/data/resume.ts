@@ -140,10 +140,10 @@ export const projects: Project[] = [
     approach:
       "A .NET 11 clean-architecture API and a React 19 app. An LLM (Ollama locally, or Gemini/OpenAI with your own key) extracts transactions from PDF, CSV and receipt photos with structured output; every amount is checked against the statement text, date order is settled per statement, and category corrections become merchant rules. Quick add parses lines like 'chai 40 upi' with plain rules and only asks the AI about unknown merchants.",
     impact:
-      "All data stays in one SQLite file on the user's machine, with daily backups. Includes budgets, bills, savings pots, a chat that answers with read-only capped query tools, Monthly Wrapped cards and 79 xUnit tests.",
-    stack: [".NET 11", "EF Core", "SQLite", "Microsoft.Extensions.AI", "Ollama", "PdfPig", "React 19", "TypeScript", "Tailwind 4", "xUnit"],
+      "Ships as a free download for Windows, macOS and Linux (no installer, a tray app on Windows), built by GitHub Actions from the source. All data stays in one SQLite file on the user's machine, with daily backups. Includes budgets, bills, savings pots, weekly quests, a chat that answers with read-only capped query tools, Monthly Wrapped cards and 79 xUnit tests.",
+    stack: [".NET 11", "EF Core", "SQLite", "Microsoft.Extensions.AI", "Ollama", "PdfPig", "React 19", "TypeScript", "Tailwind 4", "xUnit", "GitHub Actions"],
     showcase: "spence",
-    link: { label: "GitHub", url: "https://github.com/bilal-py/spence-ai" },
+    link: { label: "Project page", url: "https://bilal-py.github.io/spence-ai/" },
   },
   {
     title: "AI QA Agents for Spec-Driven Testing",

@@ -54,6 +54,9 @@ const SYNONYMS: Record<string, string[]> = {
   personal: ["spence", "project"],
   side: ["spence", "personal", "project"],
   ollama: ["spence", "local"],
+  download: ["spence", "windows", "release"],
+  desktop: ["spence", "windows", "tray"],
+  budget: ["spence", "expense"],
   local: ["spence", "ollama", "sqlite"],
 };
 

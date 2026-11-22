@@ -5,7 +5,9 @@ import { buttonVariants } from "@/Components/ui/button";
 import { CATEGORIES, formatINR, parseLine, type Category, type Entry } from "@/lib/spenceQuickAdd";
 import { cn } from "@/lib/utils";
 
+const SITE = "https://bilal-py.github.io/spence-ai/";
 const REPO = "https://github.com/bilal-py/spence-ai";
+const RELEASES = "https://github.com/bilal-py/spence-ai/releases/latest";
 
 const examples = [
   "pottery class 1.5k gpay",
@@ -291,20 +293,34 @@ export function SpenceShowcase({ stack }: { stack: string[] }) {
             </h3>
           </div>
         </div>
-        <a
-          href={REPO}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn(buttonVariants({ variant: "outline" }), "text-base")}
-        >
-          View the source
-        </a>
+        <div className="flex flex-wrap gap-2">
+          <a
+            href={SITE}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(buttonVariants(), "bg-spence text-base text-[var(--spence-paper)] hover:bg-spence/90")}
+          >
+            Open the project page
+          </a>
+          <a
+            href={REPO}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(buttonVariants({ variant: "outline" }), "text-base")}
+          >
+            View the source
+          </a>
+        </div>
       </div>
 
-      <p className="mt-6 max-w-[62ch] text-lg">
+      <p className="mt-6 max-w-[62ch] font-display text-2xl leading-snug font-medium tracking-tight sm:text-[1.75rem]">
+        Know where the month went.
+      </p>
+      <p className="mt-4 max-w-[64ch] text-lg">
         A local-first expense tracker. Drop in a bank statement or type a purchase the way you'd text it; an AI model
         sorts every transaction, you check it, and it saves to one SQLite file on your own machine. It runs fully offline
-        with Ollama, or with your own Gemini or OpenAI key.
+        with Ollama, or with your own Gemini or OpenAI key. Around that sit bills, budgets, savings pots, weekly quests,
+        a shareable Monthly Wrapped and Sprig, a small dashboard pet that never nags.
       </p>
 
       <QuickAddDemo />
@@ -347,7 +363,21 @@ export function SpenceShowcase({ stack }: { stack: string[] }) {
         </figcaption>
       </figure>
 
-      <p className="mt-6 text-sm text-muted-foreground">{stack.join(", ")}</p>
+      <div className="mt-10 border-t pt-6">
+        <p className="max-w-[68ch] text-base">
+          Download it for Windows, macOS or Linux from the{" "}
+          <a href={SITE} target="_blank" rel="noopener noreferrer" className="text-link">
+            project page
+          </a>
+          : unzip it, open Spence, and it starts in your browser. No installer, no account. On Windows it waits in the tray
+          by the clock. GitHub Actions builds every{" "}
+          <a href={RELEASES} target="_blank" rel="noopener noreferrer" className="text-link">
+            release
+          </a>{" "}
+          from the open-source code.
+        </p>
+        <p className="mt-3 text-sm text-muted-foreground">{stack.join(", ")}</p>
+      </div>
     </article>
   );
 }
