@@ -1,10 +1,12 @@
 import { Section } from "@/Components/Section";
+import { HushmaskShowcase } from "@/Components/HushmaskShowcase";
 import { SpenceShowcase } from "@/Components/SpenceShowcase";
 import { projects, socials } from "@/data/resume";
 
 const github = socials.find((s) => s.key === "github");
 const [featured, ...others] = projects;
 const spence = others.find((p) => p.showcase === "spence");
+const hushmask = others.find((p) => p.showcase === "hushmask");
 const rest = others.filter((p) => !p.showcase);
 
 const pipeline = [
@@ -13,7 +15,7 @@ const pipeline = [
     title: "Presidio redacts",
     body: (
       <>
-        Personal details are detected and swapped for entity tags like <span className="entity-tag">&lt;PERSON&gt;</span>.
+        Personal details are detected and swapped for entity tags like <span className="hm-tape [--sw:var(--muted-foreground)]">&lt;PERSON&gt;</span>.
       </>
     ),
   },
@@ -64,6 +66,8 @@ export default function ProjectsPage() {
           <p className="mt-5 text-sm text-muted-foreground">{featured.stack.join(", ")}</p>
         </div>
       </article>
+
+      {hushmask && <HushmaskShowcase stack={hushmask.stack} />}
 
       {spence && <SpenceShowcase stack={spence.stack} />}
 

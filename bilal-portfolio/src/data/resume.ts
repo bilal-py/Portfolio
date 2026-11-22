@@ -103,7 +103,7 @@ export type Project = {
   impact: string;
   stack: string[];
   /** Set for projects with their own interactive showcase. */
-  showcase?: "spence";
+  showcase?: "spence" | "hushmask";
   link?: { label: string; url: string };
 };
 
@@ -118,6 +118,19 @@ export const projects: Project[] = [
     impact:
       "Removed manual data entry from the flow while keeping LLM costs low. Pitched directly to the client's group CEO.",
     stack: ["Python", "Pydantic AI", "Claude", "Microsoft Presidio"],
+  },
+  {
+    title: "hushmask: Privacy Proxy for LLMs",
+    context: "Personal project, open source, on PyPI",
+    problem:
+      "After the Presidio hackathon, the same gap kept showing up: people paste emails, contracts and bank statements into AI tools, and every name, IBAN and address in them ends up on someone else's server.",
+    approach:
+      "A Python library, CLI and OpenAI-compatible proxy (FastAPI) that swaps personal values for stable tokens like PERSON_4aee58 before a request leaves the machine, and restores them in the answer, including JSON and tool calls. Patterns with checksums (Luhn, IBAN mod 97, Aadhaar Verhoeff) catch numbers; street-address patterns cover DE/NL/FR/IT/ES/US/UK/AU; a local GLiNER names model on ONNX finds names nobody listed. It fails closed: masked text is scanned again and refused if anything detectable survived. A React dashboard has a playground and per-app keys for Ollama, OpenAI, Gemini, OpenRouter and Groq.",
+    impact:
+      "Fully hides 87% of personal values on ai4privacy English text and 90% on German, up from about 26% with patterns alone. A local model categorising 52 transactions scored 92.3% on tokens versus 94.2% on real data, with every name restored. Any OpenAI-style app can use it by changing one URL.",
+    stack: ["Python", "FastAPI", "ONNX Runtime", "GLiNER", "React", "TypeScript", "Tailwind", "pytest", "GitHub Actions"],
+    showcase: "hushmask",
+    link: { label: "Project page", url: "https://bilal-py.github.io/hushmask/" },
   },
   {
     title: "Spence: Local-First AI Expense Tracker",
@@ -166,7 +179,7 @@ export const skills: { category: string; items: string[] }[] = [
   { category: "Databases", items: ["SQL Server", "PostgreSQL"] },
   {
     category: "AI-Assisted Development",
-    items: ["GitHub Copilot", "Claude Code", "AWS Bedrock", "Prompt Engineering", "Tool / Function Calling"],
+    items: ["GitHub Copilot", "Claude Code", "AWS Bedrock", "Prompt Engineering", "Tool / Function Calling", "PII Masking (Presidio, hushmask)"],
   },
   {
     category: "Tools & Testing",
@@ -207,6 +220,7 @@ export const achievements: string[] = [
   "Ranked in the top 14.11% globally on LeetCode with 650+ problems solved and a peak contest rank of 1,400.",
   "6★ in Problem Solving and 5★ in Python on HackerRank.",
   "Pitched a GenAI document-processing POC directly to a client's group CEO at a Thoughtworks hackathon.",
+  "Turned that hackathon idea into hushmask, an open-source privacy proxy for LLMs published on PyPI.",
 ];
 
 export type Education = { institution: string; degree: string; period: string; detail?: string };

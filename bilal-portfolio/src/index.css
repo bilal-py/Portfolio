@@ -6,7 +6,7 @@
 @theme {
   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Bricolage Grotesque", "IBM Plex Sans", ui-sans-serif, sans-serif;
-  --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", Menlo, Consolas, monospace;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
 }
 
 @theme inline {
@@ -36,6 +36,8 @@
   --color-mark: var(--mark);
   --color-mark-ink: var(--mark-ink);
   --color-spence: var(--spence);
+  --color-tape: var(--tape);
+  --color-tape-text: var(--tape-text);
 }
 
 :root {
@@ -59,8 +61,17 @@
   --input: #c3cbd8;
   --ring: #2b4acb;
   --link: #2b4acb;
-  --mark: #ffe066;
+  --mark: #ffe45c;
   --mark-ink: #0f1b2d;
+  /* hushmask's highlighter families: one colour per kind of personal data */
+  --hl-person: #ffe45c;
+  --hl-contact: #8ef0c6;
+  --hl-number: #ff9ec7;
+  --hl-place: #9ed8ff;
+  --hl-custom: #cdbbff;
+  /* the "tape" a value becomes once it is masked */
+  --tape: #0f1b2d;
+  --tape-text: #f4f6fa;
   /* Spence's own brand colours, used only inside its case study */
   --spence: #1e5a46;
   --spence-soft: #d6e6dc;
@@ -88,8 +99,15 @@
   --input: #2f4163;
   --ring: #8ea2ff;
   --link: #8ea2ff;
-  --mark: #ffd84d;
+  --mark: #e8cf45;
   --mark-ink: #0f1b2d;
+  --hl-person: #e8cf45;
+  --hl-contact: #6fd9ad;
+  --hl-number: #f08cb7;
+  --hl-place: #82c4ec;
+  --hl-custom: #b7a4f2;
+  --tape: #e7ecf3;
+  --tape-text: #0e1626;
   --spence: #6fc2a0;
   --spence-soft: #2a5c49;
   --spence-paper: #0e1626;
@@ -133,35 +151,69 @@
   &:hover {
     text-decoration-thickness: 2px;
   }
-  & .entity-swap:not(.entity-tag) {
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.2em;
+}
+
+@layer components {
+  /* A masked value: dark tape, with the kind of data shown on its left edge. */
+  .hm-tape {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.05em 0.4em;
+    border-radius: 4px;
+    border-left: 4px solid var(--sw, var(--hl-custom));
+    background: var(--tape);
+    color: var(--tape-text);
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.8em;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    line-height: 1.35;
   }
-}
 
-.entity-tag {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 0.8em;
-  letter-spacing: -0.02em;
-  background: var(--mark);
-  color: var(--mark-ink);
-  padding: 0 0.2em;
-  border-radius: 2px;
-}
-
-.entity-swap {
-  display: inline-block;
-  animation: entity-wipe 420ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
-}
-
-@keyframes entity-wipe {
-  from {
-    clip-path: inset(0 100% 0 0);
+  /* A value hushmask has found: highlighter behind the text, swiped in from the left. */
+  .hm-swap {
+    position: relative;
+    isolation: isolate;
   }
-  to {
-    clip-path: inset(0 0 0 0);
+  .hm-swap .hm-hl {
+    position: absolute;
+    inset: 10% -0.08em 4%;
+    z-index: -1;
+    border-radius: 3px;
+    background: var(--sw);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 450ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .hm-swap .hm-real {
+    transition: color 200ms;
+  }
+  .hm-swap[data-phase="marked"] .hm-hl {
+    transform: scaleX(1);
+  }
+  .hm-swap[data-phase="marked"] .hm-real {
+    color: var(--mark-ink);
+  }
+  .hm-swap[data-phase="taped"] .hm-real,
+  .hm-swap:not([data-phase="taped"]) .hm-tok {
+    display: none;
+  }
+
+  /* In the hero the token and the name share one cell, so swapping them never reflows the page. */
+  .hm-stack {
+    display: inline-grid;
+  }
+  .hm-stack > * {
+    grid-area: 1 / 1;
+  }
+  .hm-stack .hm-tok {
+    align-self: center;
+    justify-self: start;
+  }
+  .hm-stack[data-phase="taped"] .hm-real {
+    display: inline;
+    visibility: hidden;
   }
 }
 
