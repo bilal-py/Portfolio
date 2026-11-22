@@ -3,7 +3,8 @@ import { Download, EyeOff, Eye, Mail } from "lucide-react";
 
 import { SocialIcons } from "@/Components/SocialIcons";
 import { buttonVariants } from "@/Components/ui/button";
-import { profile, socials } from "@/data/resume";
+import { socials } from "@/data/resume";
+import { useResume, useUi } from "@/i18n/lang";
 import { swatch, tokenFor } from "@/lib/hushmaskDetect";
 import { cn } from "@/lib/utils";
 
@@ -64,6 +65,8 @@ function Entity({
 
 export default function HomePage() {
   const { phase, masked, toggle } = useMaskPhase();
+  const { profile } = useResume();
+  const t = useUi();
 
   const shownSocials = socials.filter((s) => ["linkedin", "github", "leetcode", "medium"].includes(s.key));
 
@@ -77,7 +80,7 @@ export default function HomePage() {
           {profile.photoFile && (
             <img
               src={asset(profile.photoFile)}
-              alt={`Portrait of ${profile.name}`}
+              alt={t.hero.portrait(profile.name)}
               width={160}
               height={160}
               className="hidden size-32 shrink-0 rounded-md object-cover sm:block lg:size-40"
@@ -86,27 +89,32 @@ export default function HomePage() {
         </div>
 
         <p className="mt-8 max-w-[34ch] font-display text-2xl leading-snug font-medium tracking-tight sm:text-[2rem]">
-          {profile.role} at {profile.currentCompany}.
+          {t.hero.roleAt(profile.role, profile.currentCompany)}
         </p>
         <p className="mt-4 max-w-[60ch] text-muted-foreground">{profile.tagline}</p>
 
         <p className="mt-6 text-base">
-          Based in{" "}
+          {t.hero.basedIn}{" "}
           <Entity type="LOCATION" value={profile.location} phase={phase} order={1} className="font-medium" />.{" "}
           {profile.availability}.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center gap-3">
           <a href="#contact" className={cn(buttonVariants({ size: "lg" }), "text-base")}>
-            Contact me
+            {t.hero.contact}
           </a>
           {profile.resumeFile && (
             <a
               href={asset(profile.resumeFile)}
               download
-              className={cn(buttonVariants({ variant: "outline", size: "lg" }), "text-base")}
+              hrefLang={profile.resumeLanguage ? "en" : undefined}
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "h-auto min-h-10 max-w-full flex-wrap gap-x-2 gap-y-0 py-2 text-base whitespace-normal",
+              )}
             >
-              <Download /> Download CV
+              <Download /> {t.hero.download}
+              {profile.resumeLanguage && <span className="font-normal text-muted-foreground">(PDF, {profile.resumeLanguage})</span>}
             </a>
           )}
         </div>
@@ -139,14 +147,14 @@ export default function HomePage() {
             className={cn(buttonVariants({ variant: "outline", size: "sm" }), "shrink-0")}
           >
             {masked ? <Eye /> : <EyeOff />}
-            {masked ? "Show the real values" : "Show what an AI receives"}
+            {masked ? t.hero.showReal : t.hero.showAi}
           </button>
           <p className="text-sm text-muted-foreground">
-            Those tokens come from{" "}
+            {t.hero.captionBefore}{" "}
             <a href="#hushmask" className="text-link">
               hushmask
             </a>
-            , my open-source proxy that hides personal data from an AI and puts it back in the answer.
+            {t.hero.captionAfter}
           </p>
         </div>
       </div>

@@ -1,9 +1,11 @@
 import { Section } from "@/Components/Section";
-import { experience } from "@/data/resume";
+import { useResume, useUi } from "@/i18n/lang";
 
 export default function ExperiencePage() {
+  const { experience } = useResume();
+  const t = useUi();
   return (
-    <Section id="experience" title="Experience">
+    <Section id="experience" title={t.sections.experience}>
       <ol>
         {experience.map((job) => (
           <li
@@ -23,7 +25,7 @@ export default function ExperiencePage() {
                 ))}
               </ul>
               <p className="mt-4 text-sm text-muted-foreground">
-                <span className="font-medium text-foreground">Stack:</span> {job.stack.join(", ")}
+                <span className="font-medium text-foreground">{t.stack}</span> {job.stack.join(", ")}
               </p>
             </div>
           </li>

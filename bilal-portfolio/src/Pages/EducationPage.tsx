@@ -1,9 +1,11 @@
 import { Section } from "@/Components/Section";
-import { education } from "@/data/resume";
+import { useResume, useUi } from "@/i18n/lang";
 
 export default function EducationPage() {
+  const { education } = useResume();
+  const t = useUi();
   return (
-    <Section id="education" title="Education" className="bg-card">
+    <Section id="education" title={t.sections.education} className="bg-card">
       <ol>
         {education.map((item) => (
           <li key={item.degree} className="grid gap-x-10 gap-y-1 border-t py-5 md:grid-cols-[11rem_1fr_auto]">

@@ -1,22 +1,33 @@
-export const profile = {
-  name: "Bilal Imran",
-  firstName: "Bilal",
-  lastName: "Imran",
+import { contact } from "./contact";
+import { resumeDe } from "./resume.de";
+
+export type { Lang } from "./contact";
+import type { Lang } from "./contact";
+
+export { contact };
+
+export type Profile = typeof contact & {
+  role: string;
+  tagline: string;
+  summary: string;
+  location: string;
+  availability: string;
+  /** Path inside /public, e.g. "Bilal_Imran_Resume.pdf". Leave empty to hide the "Download CV" button. */
+  resumeFile: string;
+  /** Set when resumeFile is in a different language from the page, e.g. "English". */
+  resumeLanguage?: string;
+};
+
+const profile: Profile = {
+  ...contact,
   role: "Full-stack engineer",
-  currentCompany: "Thoughtworks",
   tagline:
     "I build enterprise products with .NET, Angular and React, and make generative AI safe and cheap enough to run on real customer data.",
   summary:
     "Consultant Developer at Thoughtworks with 4+ years of experience shipping enterprise applications with C#/.NET, Angular, React and SQL across the automotive, insurance and energy domains. Lately I focus on bringing Generative AI into production responsibly: privacy-first document processing, AI QA agents and cutting LLM costs. I also champion Spec-Driven Development in my teams.",
   location: "Bangalore, India",
   availability: "Open to roles in Germany",
-  email: "bilalrizvi2110@gmail.com",
-  /** Path inside /public, e.g. "Bilal_Imran_Resume.pdf". Leave empty to hide the "Download CV" button. */
   resumeFile: "Bilal_Imran_Resume.pdf",
-  /** Path inside /public, e.g. "profile.jpg". Leave empty to hide the photo. */
-  photoFile: "",
-  /** Formspree endpoint, e.g. "https://formspree.io/f/abcdwxyz". Leave empty to fall back to email. */
-  formspreeEndpoint: "https://formspree.io/f/meaawwbo",
 };
 
 export type SocialKey = "github" | "linkedin" | "leetcode" | "hackerrank" | "medium" | "youtube";
@@ -36,11 +47,13 @@ export type Experience = {
   location?: string;
   period: string;
   current?: boolean;
+  /** Internships are left out of the "years of experience" count. */
+  internship?: boolean;
   highlights: string[];
   stack: string[];
 };
 
-export const experience: Experience[] = [
+const experience: Experience[] = [
   {
     company: "Thoughtworks",
     role: "Consultant Developer",
@@ -83,6 +96,7 @@ export const experience: Experience[] = [
     company: "Hitachi Vantara",
     role: "Software Development Engineer Intern",
     period: "Feb 2022 – Jun 2022",
+    internship: true,
     highlights: ["Worked with the App Engineering team on requirements across multiple client projects."],
     stack: ["Salesforce", "Apex"],
   },
@@ -90,6 +104,7 @@ export const experience: Experience[] = [
     company: "Verzeo",
     role: "Machine Learning Intern",
     period: "Oct 2020 – Nov 2020",
+    internship: true,
     highlights: ["Trained ML models, performed data preprocessing and built a movie recommendation system."],
     stack: ["Python", "Machine Learning", "Flask", "Bootstrap"],
   },
@@ -107,7 +122,7 @@ export type Project = {
   link?: { label: string; url: string };
 };
 
-export const projects: Project[] = [
+const projects: Project[] = [
   {
     title: "Privacy-First AI Document Processing",
     context: "Hackathon POC · Thoughtworks",
@@ -173,7 +188,7 @@ export const projects: Project[] = [
   },
 ];
 
-export const skills: { category: string; items: string[] }[] = [
+const skills: { category: string; items: string[] }[] = [
   { category: "Languages", items: ["C#", "TypeScript", "JavaScript", "Python", "LINQ"] },
   { category: "Frameworks & Libraries", items: [".NET Core", "Entity Framework", "Angular", "React"] },
   { category: "Databases", items: ["SQL Server", "PostgreSQL"] },
@@ -193,7 +208,7 @@ export const skills: { category: string; items: string[] }[] = [
 
 export type Certification = { title: string; issuer: string; url?: string };
 
-export const certifications: Certification[] = [
+const certifications: Certification[] = [
   {
     title: "AWS Certified AI Practitioner",
     issuer: "Amazon Web Services",
@@ -216,7 +231,7 @@ export const certifications: Certification[] = [
   },
 ];
 
-export const achievements: string[] = [
+const achievements: string[] = [
   "Ranked in the top 14.11% globally on LeetCode with 650+ problems solved and a peak contest rank of 1,400.",
   "6★ in Problem Solving and 5★ in Python on HackerRank.",
   "Pitched a GenAI document-processing POC directly to a client's group CEO at a Thoughtworks hackathon.",
@@ -225,7 +240,7 @@ export const achievements: string[] = [
 
 export type Education = { institution: string; degree: string; period: string; detail?: string };
 
-export const education: Education[] = [
+const education: Education[] = [
   {
     institution: "Pranveer Singh Institute of Technology, Kanpur",
     degree: "B.Tech, Computer Science & Engineering",
@@ -245,3 +260,17 @@ export const education: Education[] = [
     detail: "79.1%",
   },
 ];
+
+export type Resume = {
+  profile: Profile;
+  experience: Experience[];
+  projects: Project[];
+  skills: { category: string; items: string[] }[];
+  certifications: Certification[];
+  achievements: string[];
+  education: Education[];
+};
+
+const resumeEn: Resume = { profile, experience, projects, skills, certifications, achievements, education };
+
+export const resumes: Record<Lang, Resume> = { en: resumeEn, de: resumeDe };

@@ -36,6 +36,15 @@
           var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
           if (dark) document.documentElement.classList.add("dark");
         } catch (e) {}
+        // Same rule as src/i18n/lang.ts: saved choice, then the browser language, then English.
+        try {
+          var lang = localStorage.getItem("lang");
+          if (lang !== "en" && lang !== "de") {
+            var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language];
+            lang = prefs.some(function (l) { return l && l.toLowerCase().indexOf("de") === 0; }) ? "de" : "en";
+          }
+          document.documentElement.lang = lang;
+        } catch (e) {}
       })();
     </script>
   </head>

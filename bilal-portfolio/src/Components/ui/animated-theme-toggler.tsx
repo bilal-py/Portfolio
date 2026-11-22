@@ -1,6 +1,7 @@
 import { Moon, SunDim } from "lucide-react";
 import { useState, useRef } from "react";
 import { flushSync } from "react-dom";
+import { useUi } from "@/i18n/lang";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -17,6 +18,7 @@ function applyTheme(dark: boolean) {
 }
 
 export const AnimatedThemeToggler = ({ className }: Props) => {
+  const t = useUi();
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() =>
     document.documentElement.classList.contains("dark"),
   );
@@ -63,8 +65,8 @@ export const AnimatedThemeToggler = ({ className }: Props) => {
       ref={buttonRef}
       type="button"
       onClick={changeTheme}
-      aria-label={isDarkMode ? "Switch to light theme" : "Switch to dark theme"}
-      title={isDarkMode ? "Light theme" : "Dark theme"}
+      aria-label={isDarkMode ? t.theme.toLight : t.theme.toDark}
+      title={isDarkMode ? t.theme.light : t.theme.dark}
       className={cn(className)}
     >
       {isDarkMode ? <SunDim /> : <Moon />}

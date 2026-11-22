@@ -2,21 +2,37 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 import { AnimatedThemeToggler } from "@/Components/ui/animated-theme-toggler";
-import { profile } from "@/data/resume";
+import { contact as profile } from "@/data/resume";
+import { LANGS, useLang, useUi } from "@/i18n/lang";
 import { cn } from "@/lib/utils";
 
-const navigation = [
-  { name: "About", id: "about" },
-  { name: "Experience", id: "experience" },
-  { name: "Projects", id: "projects" },
-  { name: "Skills", id: "skills" },
-  { name: "Awards", id: "achievements" },
-  { name: "Education", id: "education" },
-  { name: "Ask", id: "ask" },
-  { name: "Contact", id: "contact" },
-];
+const ids = ["about", "experience", "projects", "skills", "achievements", "education", "ask", "contact"] as const;
 
-const ids = navigation.map((n) => n.id);
+function LanguageSwitch() {
+  const { lang, setLang } = useLang();
+  const t = useUi();
+  return (
+    <div role="group" aria-label={t.lang.label} className="mr-1 inline-flex rounded-md border p-0.5 text-sm font-semibold">
+      {LANGS.map((l) => (
+        <button
+          key={l}
+          type="button"
+          lang={l}
+          aria-pressed={l === lang}
+          aria-label={t.lang[l]}
+          title={t.lang[l]}
+          onClick={() => setLang(l)}
+          className={cn(
+            "rounded-[4px] px-2 py-0.5 uppercase",
+            l === lang ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground",
+          )}
+        >
+          {l}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 function useActiveSection() {
   const [active, setActive] = useState("");
@@ -41,6 +57,8 @@ function useActiveSection() {
 export default function NavbarComponent() {
   const [open, setOpen] = useState(false);
   const active = useActiveSection();
+  const t = useUi();
+  const navigation = ids.map((id) => ({ id, name: t.nav[id] }));
 
   const linkClass = (id: string) =>
     cn(
@@ -50,7 +68,7 @@ export default function NavbarComponent() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b bg-background/90 backdrop-blur">
-      <nav aria-label="Main" className="mx-auto flex h-16 max-w-[calc(64rem+4rem)] items-center justify-between px-5 sm:px-8">
+      <nav aria-label={t.nav.label} className="mx-auto flex h-16 max-w-[calc(64rem+4rem)] items-center justify-between px-5 sm:px-8">
         <a href="#home" className="font-display text-lg font-bold tracking-tight" onClick={() => setOpen(false)}>
           {profile.name}
         </a>
@@ -70,13 +88,14 @@ export default function NavbarComponent() {
         </ul>
 
         <div className="-mr-2 flex items-center gap-1">
+          <LanguageSwitch />
           <AnimatedThemeToggler className="rounded-md p-2 text-muted-foreground hover:bg-accent hover:text-foreground [&_svg]:size-5" />
           <button
             type="button"
             className="rounded-md p-2 text-muted-foreground hover:bg-accent hover:text-foreground lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
             onClick={() => setOpen((o) => !o)}
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}

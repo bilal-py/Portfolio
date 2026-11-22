@@ -1,9 +1,11 @@
 import { Section } from "@/Components/Section";
-import { achievements, certifications } from "@/data/resume";
+import { useResume, useUi } from "@/i18n/lang";
 
 export default function AchievementsPage() {
+  const { achievements, certifications } = useResume();
+  const t = useUi();
   return (
-    <Section id="achievements" title="Certifications and awards">
+    <Section id="achievements" title={t.sections.achievements}>
       <div className="grid gap-12 md:grid-cols-2">
         <ul>
           {certifications.map((cert) => (
